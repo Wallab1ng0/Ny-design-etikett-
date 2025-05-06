@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktinformation - Jackor</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <style>
+        body {
+            background-color: #f0f9ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .data-table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .data-table th {
+            background-color: #0369a1;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 8px;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #e0f2fe;
+        }
+        .data-table tr:nth-child(odd) {
+            background-color: #f0f9ff;
+        }
+        .data-table tr:hover {
+            background-color: #bae6fd;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-blue-900 font-sans">
+    <div class="max-w-6xl mx-auto p-6">
+        <header class="mb-10 text-center bg-gradient-to-r from-blue-700 to-teal-500 text-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold">Produktinformation - Jackor</h1>
+            <p class="text-blue-100 mt-2">Här hittar du både generell och avancerad information om våra jackor.</p>
+        </header>
+
+        <!-- Produkttabeller - kalkylblad-stil -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-semibold text-center mb-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white p-3 rounded-lg shadow">Produktöversikt - Kalkylarksformat</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="w-1/6">Produktegenskap</th>
+                            <th class="w-2/5 bg-blue-600">Jacket 1, 2460</th>
+                            <th class="w-2/5 bg-teal-500">Jacket 2, 3500</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Modelltyp</td>
+                            <td>Premium vintermodell</td>
+                            <td>Lätt vårmodell</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Yttertyg</td>
+                            <td>88% Nylon, 12% Spandex</td>
+                            <td>85% Polyester, 15% Spandex</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Foder</td>
+                            <td>100% Polyester</td>
+                            <td>100% Polyester</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Isolering</td>
+                            <td>30% Recycled Polyester, 70% Polyester</td>
+                            <td>40% Recycled Polyester, 60% Polyester</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Dragkedjor</td>
+                            <td>Metall (Gunmetal/Svart)</td>
+                            <td>Plast (Svart)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Tillverkningsland</td>
+                            <td>Kina (Suzhou, Dalian, Haining)</td>
+                            <td>Bangladesh (Dhaka)</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">CO₂-avtryck</td>
+                            <td>0,13 kg/plagg</td>
+                            <td>0,11 kg/plagg</td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Certifieringar</td>
+                            <td>Fluorfri DWR (C0)</td>
+                            <td>OEKO-TEX, GOTS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Produktbilder och grafer -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Första jackan: Jacket 1 -->
+            <section class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg shadow-lg overflow-hidden border border-blue-300">
+                <div class="bg-blue-600 text-white p-4">
+                    <h2 class="text-2xl font-semibold">Jacket 1, 2460</h2>
+                    <p class="text-blue-100">Premium vintermodell</p>
+                </div>
+                
+                <!-- Bild placeholder -->
+                <div class="bg-white h-64 flex items-center justify-center border-b border-blue-300">
+                    <img src="/api/placeholder/300/200" alt="Jacket 1" class="max-h-full"/>
+                </div>
+                
+                <!-- Miljö och hållbarhet med graf -->
+                <div class="p-4">
+                    <h3 class="font-semibold text-xl text-blue-800 border-b border-blue-300 pb-2 mb-4">Materialfördelning</h3>
+                    <div class="h-64 mb-4 bg-white rounded-lg p-2">
+                        <canvas id="jacket1Chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Andra jackan: Jacket 2 -->
+            <section class="bg-gradient-to-br from-teal-100 to-teal-200 rounded-lg shadow-lg overflow-hidden border border-teal-300">
+                <div class="bg-teal-600 text-white p-4">
+                    <h2 class="text-2xl font-semibold">Jacket 2, 3500</h2>
+                    <p class="text-teal-100">Lätt vårmodell</p>
+                </div>
+                
+                <!-- Bild placeholder -->
+                <div class="bg-white h-64 flex items-center justify-center border-b border-teal-300">
+                    <img src="/api/placeholder/300/200" alt="Jacket 2" class="max-h-full"/>
+                </div>
+                
+                <!-- Miljö och hållbarhet med graf -->
+                <div class="p-4">
+                    <h3 class="font-semibold text-xl text-teal-800 border-b border-teal-300 pb-2 mb-4">Materialfördelning</h3>
+                    <div class="h-64 mb-4 bg-white rounded-lg p-2">
+                        <canvas id="jacket2Chart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Jämförelsesektion - Diagram -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-center mb-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white p-3 rounded-lg shadow">Miljöjämförelse</h2>
+            
+            <div class="bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                <div class="h-80">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tvättråd och skötsel i tabellform -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-center mb-6 bg-gradient-to-r from-blue-600 to-teal-400 text-white p-3 rounded-lg shadow">Tvättråd & Skötsel</h2>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th class="w-1/4">Skötselmoment</th>
+                            <th class="w-3/8 bg-blue-600">Jacket 1, 2460</th>
+                            <th class="w-3/8 bg-teal-500">Jacket 2, 3500</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Temperatur</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-200 text-blue-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">30°</div>
+                                    Maskintvätt
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-teal-200 text-teal-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">30°</div>
+                                    Maskintvätt
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Blekning</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-200 text-blue-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">✕</div>
+                                    Ej tillåtet
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-teal-200 text-teal-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">✕</div>
+                                    Ej tillåtet
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Torktumling</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-200 text-blue-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">✕</div>
+                                    Ej tillåtet
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-teal-200 text-teal-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">✕</div>
+                                    Ej tillåtet
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Strykning</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-200 text-blue-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">•</div>
+                                    Låg värme
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-teal-200 text-teal-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">•</div>
+                                    Låg värme
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Kemtvätt</td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-blue-200 text-blue-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">✕</div>
+                                    Ej tillåtet
+                                </div>
+                            </td>
+                            <td>
+                                <div class="flex items-center">
+                                    <div class="bg-teal-200 text-teal-800 p-2 rounded-full mr-2 w-10 h-10 flex items-center justify-center font-bold">✕</div>
+                                    Ej tillåtet
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium bg-blue-100">Notering</td>
+                            <td>Se care label (8848-003) för fullständiga instruktioner.</td>
+                            <td>Maskintvätt 30°C, torktumlas ej, stryk med låg värme.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+                                <li class="flex items-center">
+                                    <span class="bg-purple-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center mr-2">2</span>
+                                    <span>Transport med lastbil till Chittagong hamn</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="bg-purple-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center mr-2">3</span>
+                                    <span>Sjötransport till Göteborg</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="bg-purple-500 text-white p-1 rounded-full w-6 h-6 flex items-center justify-center mr-2">4</span>
+                                    <span>Distribution till butik/lager</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-500 mt-12 p-4 border-t border-gray-200">
+            <p>© 2025 Produkt- och miljöinformation</p>
+        </footer>
+    </div>
+
+    <script>
+        // Jacket 1 Chart - Material Composition
+        const jacket1Ctx = document.getElementById('jacket1Chart').getContext('2d');
+        const jacket1Chart = new Chart(jacket1Ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Nylon', 'Spandex', 'Polyester', 'Återvunnen Polyester'],
+                datasets: [{
+                    data: [70, 10, 14, 6],
+                    backgroundColor: [
+                        'rgba(76, 29, 149, 0.8)',
+                        'rgba(124, 58, 237, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(167, 139, 250, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(76, 29, 149, 1)',
+                        'rgba(124, 58, 237, 1)',
+                        'rgba(139, 92, 246, 1)',
+                        'rgba(167, 139, 250, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Materialfördelning'
+                    }
+                }
+            }
+        });
+
+        // Jacket 2 Chart - Material Composition
+        const jacket2Ctx = document.getElementById('jacket2Chart').getContext('2d');
+        const jacket2Chart = new Chart(jacket2Ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Polyester', 'Spandex', 'Återvunnen Polyester'],
+                datasets: [{
+                    data: [68, 12, 20],
+                    backgroundColor: [
+                        'rgba(147, 51, 234, 0.8)',
+                        'rgba(168, 85, 247, 0.8)',
+                        'rgba(192, 132, 252, 0.8)'
+                    ],
+                    borderColor: [
+                        'rgba(147, 51, 234, 1)',
+                        'rgba(168, 85, 247, 1)',
+                        'rgba(192, 132, 252, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Materialfördelning'
+                    }
+                }
+            }
+        });
+
+        // Comparison Chart - Sustainability
+        const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+        const comparisonChart = new Chart(comparisonCtx, {
+            type: 'bar',
+            data: {
+                labels: ['CO₂-avtryck (kg/plagg)', 'Återvunnet material (%)', 'Transportsträcka (1000 km)'],
+                datasets: [
+                    {
+                        label: 'Jacket 1',
+                        data: [0.13, 30, 10.2],
+                        backgroundColor: 'rgba(79, 70, 229, 0.7)',
+                        borderColor: 'rgba(79, 70, 229, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Jacket 2',
+                        data: [0.11, 40, 9.1],
+                        backgroundColor: 'rgba(147, 51, 234, 0.7)',
+                        borderColor: 'rgba(147, 51, 234, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Miljöjämförelse'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
